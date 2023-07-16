@@ -1,0 +1,62 @@
+<nav>
+    <button mat-stroked-button routerLink="/home">
+        <mat-icon aria-hidden="false" aria-label="Home icon" fontIcon="home"></mat-icon>
+        Home
+    </button>
+    
+    <button
+        mat-stroked-button
+        routerLink="/followed-stocks"
+    >
+        <mat-icon>assessment</mat-icon>
+        FollowedStocks
+    </button>
+
+    <button
+        mat-stroked-button
+        routerLink="/annotate"
+        *ngIf="this.api.isAnnotator()"
+    >
+        <mat-icon>library_books</mat-icon>
+        Annotate
+    </button>
+
+    <button
+        mat-stroked-button
+        routerLink="/authorization"
+        *ngIf="this.api.isAdmin()"
+    >
+        <mat-icon>supervisor_account</mat-icon>
+        Authorization
+    </button>
+
+    <button
+        mat-stroked-button
+        routerLink="/register"
+        *ngIf="!this.api.isLoggedIn()"
+    >
+        <mat-icon>how_to_reg</mat-icon>
+        Register
+    </button>
+
+    <button
+        mat-flat-button
+        color="accent"
+        routerLink="/login"
+        *ngIf="!this.api.isLoggedIn()"
+    >
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="login"></mat-icon>
+        Login
+    </button>
+
+    <button
+        mat-stroked-button
+        color="accent"
+        routerLink="/logout"
+        *ngIf="this.api.isLoggedIn()"
+    >
+        <mat-icon aria-hidden="false" aria-label="" fontIcon="login"></mat-icon>
+        Logout
+    </button>
+
+</nav>

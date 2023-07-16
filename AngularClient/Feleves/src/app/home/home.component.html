@@ -1,0 +1,23 @@
+<h1>Articles</h1>
+<div class="list-group mb-3" *ngFor="let article of articles">
+    <a class="list-group-item list-group-item-action" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <h3 class="mb-0"><b>{{ article.ticker }}</b></h3>
+        <a href="{{article.link}}" target="_blank" class="link-dark"><small>{{ article.source }}</small></a>
+        <small>{{ article.date }}</small>
+      </div>
+      <div class="d-flex w-100 justify-content-between">
+        <p class="mt-3">{{ article.title }}</p>
+        <button title="Follow articles about this stock" 
+          mat-stroked-button
+          *ngIf="!isFollowed(article.stockId)"
+          (click)="follow(article.stockId)"
+        >
+          FOLLOW</button>
+      </div>
+      <small [ngClass]="{'green' : article.sentiment == 'positive', 
+                         'red' : article.sentiment == 'negative'}">
+                         {{ article.sentiment }}
+      </small>
+    </a>
+  </div>

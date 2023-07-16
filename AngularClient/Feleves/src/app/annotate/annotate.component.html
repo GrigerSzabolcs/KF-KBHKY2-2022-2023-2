@@ -1,0 +1,36 @@
+<h1>Annotation</h1>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Headline</th>
+        <th scope="col">Sentiment</th>
+        <th scope="col">Submit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of labeleddatas">
+        <td><h3>{{article.text}}</h3></td>
+        <td>
+            <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select [(value)]="article.sentiment">
+                  <mat-option value="neutral">Neutral</mat-option>
+                  <mat-option value="negative">Negative</mat-option>
+                  <mat-option value="positive">Positive</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </td>
+        <td>
+            <button
+            mat-stroked-button
+            (click)="createAnnotation(article)"
+            class="mt-2"
+            >    
+            Annotate
+            </button>
+        </td>
+      </tr>
+    </tbody>
+</table>
